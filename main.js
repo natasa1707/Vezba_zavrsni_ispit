@@ -2,6 +2,7 @@ $(function(){
     $(".container").hide();
     $(".tabela").hide();
     $('#unos').click(function(){
+        $(".tabela").hide();
         $(".container").show()
     })
     $('#test1').blur(function(){
@@ -34,7 +35,7 @@ $(function(){
 
     let nizStudenata = []
     $('#sacuvaj').click(function(){
-        $(".tabela").hide();
+        
         if(sampleName.test($('#ime').val()) && $('#test1').val() != '' && $('#test2').val() != '' && $('#projekat').val() != '') {
             nizStudenata.push(new Studenti($('#ime').val(), +$('#test1').val(), +$('#test2').val(), +$('#projekat').val()));
             nizStudenata.sort(function(a,b) {

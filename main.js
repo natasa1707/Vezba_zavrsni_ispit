@@ -57,8 +57,12 @@ $(function(){
             $('tbody').append(`<tr><td>${nizStudenata[i].ime}</td><td>${nizStudenata[i].test1}</td><td>${nizStudenata[i].test2}</td><td>${nizStudenata[i].projekat}</td><td>${nizStudenata[i].ukupnoBodova}</td></tr>`);
             $('tr:eq(' + i+1 + ')').attr('id', 'id'+i)
             if (nizStudenata[i].ukupnoBodova >= 80) {
-                $('id' + i).css('color', 'red')
-                
+                $('#id'+i).css('background-color', 'yellow')
+            }
+            if (nizStudenata[i].ukupnoBodova >= 55 && nizStudenata[i].ukupnoBodova <= 80) {
+                $('#id'+i).css('background-color', 'green')
+            } else {
+                $('#id'+i).css('background-color', 'red')
             }
         }
 

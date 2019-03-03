@@ -41,7 +41,7 @@ input {
 }
 
 .container {
-    margin: 3px;
+    margin: 10px;
     border: 1px solid;
     border-radius: 10px;
     background-color: lightgray;
@@ -64,5 +64,14 @@ thead th {
     width: 20%;
 }
 .tabela {
-    
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: lightgray;
+    text-align:center 
+}
+
+table {
+    margin: auto;
+    width: 90%;
 }

@@ -61,7 +61,8 @@ $(function(){
             }
             if (nizStudenata[i].ukupnoBodova >= 55 && nizStudenata[i].ukupnoBodova <= 80) {
                 $('#id'+i).css('background-color', 'green')
-            } else {
+            } 
+            if (nizStudenata[i].ukupnoBodova <= 55) {
                 $('#id'+i).css('background-color', 'red')
             }
         }

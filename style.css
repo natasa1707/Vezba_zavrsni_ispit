@@ -40,8 +40,8 @@ input {
     height: 20px;
 }
 
-.container, .tabela {
-    margin: 3px;
+.container {
+    margin: 10px;
     border: 1px solid;
     border-radius: 10px;
     background-color: lightgray;

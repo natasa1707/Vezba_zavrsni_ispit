@@ -1,27 +1,27 @@
-$(function(){
+$(function () {
     $(".container").hide();
     $(".tabela").hide();
-    $('#unos').click(function(){
+    $('#unos').click(function () {
         $(".tabela").hide();
         $(".container").show()
     })
-    $('#test1').blur(function(){
-        if($(this).val() > 26 || $(this).val() == '') {
+    $('#test1').blur(function () {
+        if ($(this).val() > 26 || $(this).val() == '') {
             alert('U ovo polje unesite brojeve iz opsega 0 - 25')
         }
     })
-    $('#test2').blur(function(){
-        if($(this).val() > 26 || $(this).val() == '') {
+    $('#test2').blur(function () {
+        if ($(this).val() > 26 || $(this).val() == '') {
             alert('U ovo polje unesite brojeve iz opsega 0 - 25')
         }
     })
-    $('#projekat').blur(function(){
-        if($(this).val() > 51 || $(this).val() == '') {
+    $('#projekat').blur(function () {
+        if ($(this).val() > 51 || $(this).val() == '') {
             alert('U ovo polje unesite brojeve iz opsega 0 - 50')
         }
     })
-   
-    const sampleName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{1,13}(\s[A-ZŠĐČĆŽ][a-zšđčćž]{1,13})+$/; 
+
+    const sampleName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{1,13}(\s[A-ZŠĐČĆŽ][a-zšđčćž]{1,13})+$/;
     function Studenti(ime, test1, test2, projekat) {
         this.ime = ime;
         this.test1 = test1;
@@ -34,39 +34,45 @@ $(function(){
     console.log(nekistudent)
 
     let nizStudenata = []
-    $('#sacuvaj').click(function(){
-        
-        if(sampleName.test($('#ime').val()) && $('#test1').val() != '' && $('#test2').val() != '' && $('#projekat').val() != '') {
+    $('#sacuvaj').click(function () {
+
+        if (sampleName.test($('#ime').val()) && $('#test1').val() != '' && $('#test2').val() != '' && $('#projekat').val() != '') {
             nizStudenata.push(new Studenti($('#ime').val(), +$('#test1').val(), +$('#test2').val(), +$('#projekat').val()));
-            nizStudenata.sort(function(a,b) {
+            nizStudenata.sort(function (a, b) {
                 return b.ukupnoBodova - a.ukupnoBodova;
             })
             $('input[type="text"]').val('')
-        console.log(nizStudenata)
+            console.log(nizStudenata)
         } else (
             alert('Molimo Vas da popunite sva polja!')
         )
     })
 
-    $('#prikaz').click(function(){
+    $('#prikaz').click(function () {
         $('tbody').empty();
         $(".container").hide();
         $(".tabela").show();
 
-        for(let i = 0; i < nizStudenata.length; i++) {
+        for (let i = 0; i < nizStudenata.length; i++) {
+            console.log(nizStudenata)
             $('tbody').append(`<tr><td>${nizStudenata[i].ime}</td><td>${nizStudenata[i].test1}</td><td>${nizStudenata[i].test2}</td><td>${nizStudenata[i].projekat}</td><td>${nizStudenata[i].ukupnoBodova}</td></tr>`);
-            $('tr:eq(' + i+1 + ')').attr('id', 'id'+i)
-            if (nizStudenata[i].ukupnoBodova >= 80) {
-                $('#id'+i).css('background-color', 'yellow')
-            }
-            if (nizStudenata[i].ukupnoBodova >= 55 && nizStudenata[i].ukupnoBodova <= 80) {
-                $('#id'+i).css('background-color', 'green')
-            } else {
-                $('#id'+i).css('background-color', 'red')
-            }
+
         }
 
-        
-        
+        for (let j = 0; j < nizStudenata.length + 1; j++) {
+            $('tr:eq(' + j + ')').attr('id', 'id' + j)
+
+        }
+
+        for (let j = 1; j < nizStudenata.length + 1; j++) {
+            if (nizStudenata[j - 1].ukupnoBodova >= 80) {
+                $('#id' + j).css('background-color', 'yellow')
+            } else
+                if (nizStudenata[j - 1].ukupnoBodova >= 55 && nizStudenata[j - 1].ukupnoBodova <= 80) {
+                    $('#id' + j).css('background-color', 'green')
+                } else {
+                    $('#id' + j).css('background-color', 'red')
+                }
+        }
     })
 })
